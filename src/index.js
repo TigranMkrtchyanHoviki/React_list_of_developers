@@ -69,7 +69,15 @@ const store = createStore(reducer)
 // console.log(newArr)
 
 
-// const arr = [{id: 5}, {id: 6}, {id: 7}]
+// const arr = [{id: 5}, {id: 6}, {id: 7}, {id: 5}]
+
+// const find = arr.some(elem => {
+//    if(elem.id === 2) {
+//     return true
+//   }
+// })
+
+// console.log(find)
 
 // console.log(arr.find(obj => obj.id === 5))
 

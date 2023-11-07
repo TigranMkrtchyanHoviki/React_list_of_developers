@@ -11,7 +11,7 @@ import {makeReset_skills} from "../Store/Action"
 
 import set_Date from "../SetDate/SetDate";
 
-const AddNewDev = ({list_Dev, skills, Show_Form, Dispatch_Choose_skill, Dispatch_Add_New_Dev, Dispatch_reset_skills}) => {
+const AddNewDev = ({list_Dev, skills, Show_Form, Show_error, Dispatch_Choose_skill, Dispatch_Add_New_Dev, Dispatch_reset_skills}) => {
 
     const [company_name, setCompany_name] = useState("")
     const [company_url, setCompany_url] = useState("")
@@ -28,6 +28,35 @@ const AddNewDev = ({list_Dev, skills, Show_Form, Dispatch_Choose_skill, Dispatch
                        return skill
                    }
         }).map(skill => skill.skill)
+    }
+
+    const Add_or_dont_add_new_dev = () => {
+        
+        const check_skill = skills.some(every_skill => every_skill.checked === true)
+
+        if(company_name !== "" && company_url !== "" && 
+           job_link !== "" && job_title !== "" && 
+           job_discription !== "" && check_skill){
+            
+        Dispatch_Add_New_Dev({
+            id: list_Dev[list_Dev.length-1].id + 1,
+            posted_on: set_Date(),
+            job_type: job_type,
+            job_location: job_location,
+            job_link: job_link,
+            job_discription: job_discription,
+            company_name: company_name,
+            compony_website: company_url,
+            skills: Skills_new_dev(),
+            type_development: job_title
+        })
+
+        Show_Form()
+        Dispatch_reset_skills()
+
+        }else {
+            Show_error()
+        }
     }
 
     return (
@@ -116,31 +145,8 @@ const AddNewDev = ({list_Dev, skills, Show_Form, Dispatch_Choose_skill, Dispatch
                     <div className={`${AddNewDevStyle.div_submit}`}>
                             <span>*Required fields</span>
                             <button
-                               onClick={() => {
-
-                                if(company_name !== "" && company_url !== "" && job_link !== "" && job_title !== "" && job_discription !== ""){
-                                Dispatch_Add_New_Dev({
-                                    id: list_Dev[list_Dev.length-1].id + 1,
-                                    posted_on: set_Date(),
-                                    job_type: job_type,
-                                    job_location: job_location,
-                                    job_link: job_link,
-                                    job_discription: job_discription,
-                                    company_name: company_name,
-                                    compony_website: company_url,
-                                    skills: Skills_new_dev(),
-                                    type_development: job_title
-                                })
-
-                                Show_Form()
-                                Dispatch_reset_skills()
-
-                                }else {
-                                     
-                                }
-
-                               }}
-                            >Post job</button>
+                               onClick={() => {Add_or_dont_add_new_dev()}}>Post job
+                            </button>
                     </div>
                 </form>
             </div>
