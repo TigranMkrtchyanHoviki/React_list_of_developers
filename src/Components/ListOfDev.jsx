@@ -26,7 +26,7 @@ const ListOfDev = ({list_Dev, Show_Info_about_dev, Dispatch_Check_Button}) => {
                                   <p className={`${ListOfDevStyle.type_development}`}>{dev.type_development}</p>
                                   
                                   <div>
-                                       <a href={dev.company_website}>
+                                       <a href={dev.company_website} target="_blank">
                                          <button className={`${ListOfDevStyle.compony_name}`}>{dev.company_name}</button>
                                        </a>
                                   </div>

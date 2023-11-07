@@ -38,21 +38,21 @@ const AddNewDev = ({list_Dev, skills, Show_Form, Show_error, Dispatch_Choose_ski
            job_link !== "" && job_title !== "" && 
            job_discription !== "" && check_skill){
             
-        Dispatch_Add_New_Dev({
-            id: list_Dev[list_Dev.length-1].id + 1,
-            posted_on: set_Date(),
-            job_type: job_type,
-            job_location: job_location,
-            job_link: job_link,
-            job_discription: job_discription,
-            company_name: company_name,
-            compony_website: company_url,
-            skills: Skills_new_dev(),
-            type_development: job_title
-        })
-
-        Show_Form()
-        Dispatch_reset_skills()
+            Dispatch_Add_New_Dev({
+                id: list_Dev[list_Dev.length-1].id + 1,
+                posted_on: set_Date(),
+                job_type: job_type,
+                job_location: job_location,
+                job_link: job_link,
+                job_discription: job_discription,
+                company_name: company_name,
+                company_website: company_url,
+                skills: Skills_new_dev(),
+                type_development: job_title
+            })
+    
+            Show_Form()
+            Dispatch_reset_skills()
 
         }else {
             Show_error()
@@ -146,6 +146,7 @@ const AddNewDev = ({list_Dev, skills, Show_Form, Show_error, Dispatch_Choose_ski
                             <span>*Required fields</span>
                             <button
                                onClick={() => {Add_or_dont_add_new_dev()}}>Post job
+                            
                             </button>
                     </div>
                 </form>
