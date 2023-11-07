@@ -117,6 +117,8 @@ const AddNewDev = ({list_Dev, skills, Show_Form, Dispatch_Choose_skill, Dispatch
                             <span>*Required fields</span>
                             <button
                                onClick={() => {
+
+                                if(company_name !== "" && company_url !== "" && job_link !== "" && job_title !== "" && job_discription !== ""){
                                 Dispatch_Add_New_Dev({
                                     id: list_Dev[list_Dev.length-1].id + 1,
                                     posted_on: set_Date(),
@@ -132,6 +134,10 @@ const AddNewDev = ({list_Dev, skills, Show_Form, Dispatch_Choose_skill, Dispatch
 
                                 Show_Form()
                                 Dispatch_reset_skills()
+
+                                }else {
+                                     
+                                }
 
                                }}
                             >Post job</button>
